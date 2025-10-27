@@ -568,6 +568,21 @@ Crawl: "Daniel is convicted of all three murders."
 "you saved yourself."
 "Killer captured."
 
+#Daniel Scene 7
+narrator:"You try to sift your way through the crowd, but end up in a large crush of visitors. You can’t help but feel an ominous pair of eyes on you."
+Daniel: "…"
+Daniel: "(pops out from behind the pillar really fast) YOU DIE NOW."
+narrator: "Daniel lunges at you, and quickly plunges a knife into your chest. The last thing you see is Daniel’s face glancing at you, manically laughing as he continues his flurry of stabs while you take your last breath."
+Daniel: "It’s all a part of the show…"
+
+Crawl: "Your investigation has probed the suspicion of the killer, placing you directly into their crosshairs."
+	"You were unable to deduce the killer’s identity in time."
+	"Your name has now become another in a long line of obituaries."
+	"Despite a large crowd, with a quick escape, the killer managed to evade capture again."
+	"The killer is still on the loose."
+
+
+
 #Derek Scene 1
 Derek (holding out sunglasses): "Hey champ! Care for a pair?"
 you: "What? "
