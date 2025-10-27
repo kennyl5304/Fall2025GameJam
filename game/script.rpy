@@ -184,11 +184,22 @@ stephen: "Hello again officer. How is your investigation going, sir?"
 Choice: "<Accuse him of murder> I'm arresting you on suspicion of murder. you're coming with me."
 stephen: "Officer, surely there must be some sort of mistake?"
 narrator: "you tackle stephen to the ground and handcuff him before he can escape."
-Crawl: "you escorted stephen back to the police station. While cooperative before, at the station he refused to speak without his parents present."
-"Once they arrive, he recites the same exact information he told you without flaw."
-"The next morning, you find that there has been another murder committed at the mall shortly after you escorted stephen off of the premises."
-"The victim was a moonman named Derek."
-"The killer is still on the loose."
+
+scene bg black_screen
+
+    show text "You escorted Stephen back to the police station. While cooperative before, at the station he refused to speak without his parents present."
+    with fade
+    pause 5
+    show text "Once they arrive, he recites the same exact information he told you without flaw."
+    with fade
+    pause 5
+    show text "The next morning, you find that there has been another murder committed at the mall shortly after you escorted stephen off of the premises." 
+    with fade
+    pause 5
+    show text "The victim was a moonman named Derek."
+    with fade
+    pause 5
+    show text "The killer is still on the loose."
 
 #Madison Scene 1
 you: "Excuse me, may I have a word?"
@@ -310,10 +321,23 @@ Madison: "Please, I trusted you! I didn't do anything wrong I swear!"
 you: "you can defend yourself all you want at the station"
 narrator: "you tackle Madison to the ground and handcuff her before she can escape."
 <fade to black>
-Crawl: "you escorted Madison back to the police station and questioned her all night. She is scared and despite an anxiety attack, answers all the questions truthfully."
-"The next morning, you find that there has been another murder committed at the mall shortly after you escorted Madison out of the premises."
-"The victim was a moonman named Derek."
-"The killer is still on the loose."
+
+scene bg black_screen
+
+    show text "you escorted Madison back to the police station and questioned her all night."
+    with fade
+    pause 5
+    show text "She is scared and despite an anxiety attack, answers all the questions truthfully."
+    with fade
+    pause 5
+    show text "The next morning, you find that there has been another murder committed at the mall shortly after you escorted Madison off of the premises." 
+    with fade
+    pause 5
+    show text "The victim was a moonman named Derek."
+    with fade
+    pause 5
+    show text "The killer is still on the loose."
+
 
 #George Scene 1
 George: "you! Hey you!"
@@ -436,11 +460,25 @@ George: "Hard working men like me have to suffer because of freaks like you!"
 you: "Save the insults for the interrogation, gramps."
 narrator: "you tackle George to the ground and handcuff him before he can escape."
 <fade to black>
-"Crawl: you escorted George back to the police station and questioned him all night. "
-"He is agitated and hostile, but begrudgingly answers all the questions truthfully."
-"The next morning, you find that there has been another murder committed at the mall shortly after you escorted George out of the premises."
-"The victim was a moonman named Derek."
-"The killer is still on the loose."
+
+
+scene bg black_screen
+
+    show text "You escorted George back to the police station and questioned him all night."
+    with fade
+    pause 5
+    show text "He is agitated and hostile, but begrudgingly answers all the questions truthfully."
+    with fade
+    pause 5
+    show text "The next morning, you find that there has been another murder committed at the mall shortly after you escorted George off of the premises." 
+    with fade
+    pause 5
+    show text "The victim was a moonman named Derek."
+    with fade
+    pause 5
+    show text "The killer is still on the loose."
+
+
 
 #Daniel Scene 1
 you: "Hello, I'd like to ask you a few questions."
@@ -564,12 +602,26 @@ Daniel: "DON'T READ THIS DRIVEL TO ME. A SCRIPT?? PUTRID. you DISGUST ME."
 you: "If you cannot afford a lawyer, one will be appointed for you before any questioning if you wish. If you decide to answer questions now without a lawyer present, you have the right to stop answering at any time."
 narrator: "Daniel fights the whole way as you take him to the police station."
 "<fade to black>"
-Crawl: "Daniel is convicted of all three murders."
-"After some intense interrogation, you discover that he was planning to kill Derek that night."
-"When he learned you were on to him, he decided to kill you instead."
-"you didn't just save the town."
-"you saved yourself."
-"Killer captured."
+
+scene bg black_screen
+
+    show text "Daniel is convicted of all three murders."
+    with fade
+    pause 5
+    show text "After some intense interrogation, you discover that he was planning to kill Derek that night."
+    with fade
+    pause 5
+    show text "When he learned you were on to him, he decided to kill you instead."
+    with fade
+    pause 5
+    show text "You didn't just save the town."
+    with fade
+    pause 3
+    show text "You saved yourself."
+    with fade
+    pause 5 
+    show text "The killer is still on the loose."
+
 
 #Daniel Scene 7
 narrator:"You try to sift your way through the crowd, but end up in a large crush of visitors. You can’t help but feel an ominous pair of eyes on you."
@@ -578,11 +630,22 @@ Daniel: "(pops out from behind the pillar really fast) YOU DIE NOW."
 narrator: "Daniel lunges at you, and quickly plunges a knife into your chest. The last thing you see is Daniel’s face glancing at you, manically laughing as he continues his flurry of stabs while you take your last breath."
 Daniel: "It’s all a part of the show…"
 
-Crawl: "Your investigation has probed the suspicion of the killer, placing you directly into their crosshairs."
-"You were unable to deduce the killer’s identity in time."
-"Your name has now become another in a long line of obituaries."
-"Despite a large crowd, with a quick escape, the killer managed to evade capture again."
-"The killer is still on the loose."
+
+scene bg black_screen
+
+    show text "Your investigation has probed the suspicion of the killer, placing you directly into their crosshairs."
+    with fade
+    pause 5
+    show text "You were unable to deduce the killer’s identity in time."
+    with fade
+    pause 5
+    show text "Your name has now become another in a long line of forgotten obituaries." 
+    with fade
+    pause 5
+    show text "Despite a large crowd, with a quick escape, the killer managed to evade capture again."
+    with fade
+    pause 5
+    show text "The killer is still on the loose."
 
 
 
@@ -710,11 +773,24 @@ Derek: "Surely this has gotta be some mistake!"
 you: "you can prove that after I take you in."
 narrator: "you tackle Derek to the ground and handcuff him before he can escape."
 <fade to black>
-Crawl: "you escorted Derek back to the police station and questioned him all night. "
-"He is apprehensive and emotional, but answers all the questions truthfully."
-"The next morning, you find that there has been another murder committed at the mall shortly after you escorted Derek out of the premises."
-"The victim was a goatwoman named Shannon."
-"The killer is still on the loose."
+
+
+scene bg black_screen
+
+    show text "You escorted Derek back to the police station and questioned him all night."
+    with fade
+    pause 5
+    show text "He is apprehensive and emotional, but answers all the questions truthfully."
+    with fade
+    pause 5
+    show text "The next morning, you find that there has been another murder committed at the mall shortly after you escorted Derek off of the premises." 
+    with fade
+    pause 5
+    show text "The victim was a goatwoman named Shannon."
+    with fade
+    pause 5
+    show text "The killer is still on the loose."
+
 
 #Shannon Scene 1
 Shannon: "Oh my dearest me, look at you! Aren't you the most precious thing in the world?"
@@ -834,11 +910,24 @@ Shannon: "Hello again detective! Were you able to figure out who it was?"
 Choice: "<Accuse her of murder> I'm arresting you on suspicion of murder. you're coming with me."
 Shannon: "Oh dear! Are you being serious right now?"
 you: "I'm afraid so, Shannon. Please cooperate."
-narrator: "Shannon solemnly holds her wrists out. you handcuff her and take her to the station."
+narrator: "You tackle Shannon to the ground and handcuff her before she can escape."
 <fade to black>
-Crawl: "you questioned her all night."
-"At first she's still in disbelief, but soon she recovers to her chatty self."
-"you learn a lot about her life and her suspicions, but nothing that would indicate she committed these murders."
-"The next morning, you find that there has been another murder committed at the mall shortly after you escorted Shannon out of the premises."
-"The victim was a moonman named Derek."
-"The killer is still on the loose."
+
+scene bg black_screen
+
+    show text "You escorted Shannon back to the police station and questioned her all night."
+    with fade
+    pause 5
+    show text "At first she's still in disbelief, but soon she recovers to her chatty self."
+    with fade
+    pause 5
+    show text "You learn a lot about her life and her suspicions, but nothing that would indicate she committed these murders."
+    with fade
+    pause 5
+    show text "The next morning, you find that there has been another murder committed at the mall shortly after you escorted Shannon off of the premises." 
+    with fade
+    pause 5
+    show text "The victim was a moonman named Derek."
+    with fade
+    pause 5
+    show text "The killer is still on the loose."
