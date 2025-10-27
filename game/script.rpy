@@ -24,14 +24,17 @@ label start:
 
     scene bg black_screen
 
-    narrator "It is Halloween night. The year is 2003."
-
-    narrator "you are a detective sent to investigate a series of killings that has plagued the small town."
-
-    narrator "After deducing the pattern of victims, you have concluded that the killer is set to strike again tonight at the town mall." 
-
-    narrator "you must now discover the identity of the killer before someone else meets an early grave."
-
+    show text "It is Halloween night. The year is 2003."
+    with fade
+    pause 3
+    show text "You are a detective sent to investigate a series of killings that has plagued the small town."
+    with fade
+    pause 5
+    show text "After deducing the pattern of victims, you have concluded that the killer is set to strike again tonight at the town mall." 
+    with fade
+    pause 5
+    show text "You must now discover the identity of the killer before someone else meets an early grave..."
+    pause 8
         menu:
             "Enter Mall":
                 jump mall_beginning
@@ -576,10 +579,10 @@ narrator: "Daniel lunges at you, and quickly plunges a knife into your chest. Th
 Daniel: "It’s all a part of the show…"
 
 Crawl: "Your investigation has probed the suspicion of the killer, placing you directly into their crosshairs."
-	"You were unable to deduce the killer’s identity in time."
-	"Your name has now become another in a long line of obituaries."
-	"Despite a large crowd, with a quick escape, the killer managed to evade capture again."
-	"The killer is still on the loose."
+"You were unable to deduce the killer’s identity in time."
+"Your name has now become another in a long line of obituaries."
+"Despite a large crowd, with a quick escape, the killer managed to evade capture again."
+"The killer is still on the loose."
 
 
 
