@@ -32,6 +32,26 @@ image bg_storefront = "images/mall_storefront.png"
 image bg_fountain = "images/mall_fountain.png"
 image bg_booth = "images/mall_booth.png"
 
+image daniel neutral = "images/Daniel1WithPillar.png"
+image daniel excited = "images/Daniel2WithPillar.png"
+image daniel murderous = "images/Daniel3WithPillar.png"
+
+image derek neutral = "images/Derek_Neutral.png"
+image derek distressed = "images/Derek_Distressed.png"
+
+image george mad = "images/George_Mad.png"
+image george madder = "images/George_Madder.png"
+
+image madison neutral = "images/Madison_Neutral.png"
+image madison happy = "images/Madison_Happy.png"
+image madison scared = "images/Madison_Scared.png"
+
+image shannon neutral = "images/Shannon2.png"
+image shannon excited = "images/Shannon1.png"
+
+image stephen neutral = "images/Stephen_Neutral.png"
+image stephen thinking = "images/Stephen_Thinking.png"
+
 
 
 
