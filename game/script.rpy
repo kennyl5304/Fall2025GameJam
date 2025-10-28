@@ -13,8 +13,8 @@ define daniel = Character("Daniel")
 define derek = Character("Derek")
 define shannon = Character("Shannon")
 
-
-
+default time = 600
+default accusation_mode = False
 
 # The game starts here.
 
@@ -113,6 +113,60 @@ label example:
     # This ends the game.
 
     return
+
+
+screen button():
+    zorder 100
+    frame:
+        align (0.02,0.02)
+        background None
+        imagebutton:
+            idle "images/button glossy idle.png" #Change image for button icon
+            hover "images/button glossy hover.png" #Change image for button icon
+            action ToggleScreen("notepad")
+    
+screen notepad:
+    tag notepad
+    zorder 50
+    frame:
+        align (0.5,0.5)
+        background "#0008"
+        padding (200,200)
+        vbox:
+            spacing 20
+            text "Previous Murders"
+            viewport:
+                draggable True
+                mousewheel True
+                scrollbars "vertical"
+                has vbox:
+                    spacing 30
+                    frame:
+                        background None
+                        has vbox
+                        text "1. Tuesday, October 7th 2003."
+                        text "Dorothy Williams, the mother of Veronica Williams, a popular cheerleader at school, was found drowned next to the school's pool. Bruising around the wrists and a fractured rib cage. Estimated time of death 3:22 AM. There was a PTA meeting that night that ended at 7:30PM. The last person to see her was another mom named Shannon, who claims that she bid Dorothy goodbye in the parking lot after a conversation at around 9PM. The police received a call from the father, Tim, at 11:32PM. The body was found at the school shortly after. The last person at the school was the janitor who insisted he closed up and locked the swimming pool door at 10:00PM sharp as that is when he clocks out. The door to the swimming pool was found unlocked. Keys are given to several faculty members, the janitor, and several students involved in extracurriculars."
+                    frame:
+                        background None
+                        has vbox
+                        text "2. Wednesday, October 15th 2003."
+                        text "Sora Kim, a retired dokkaebi pansori drummer, was found hanging by a noose from a lamppost in the town square. A painting was made using the shadow of Sora's hanging body cast by the streetlight. His body was found at 1:27AM the next day with an ETA of death at 11:43PM. Despite the paint, police initially ruled it as a suicide, though scratch marks around the neck and additional bruises indicated a struggle, and the cause of death was revealed to be blunt force trauma to the skull. The investigation remains ongoing with the possibility of it being ruled as a hate crime on the table."
+                    frame:
+                        background None
+                        has vbox
+                        text "3. Thursday, October 23rd, 2003."
+                        text "The body of Tom Chatawa, a local fried chicken stand owner, was found in the parking lot of the town mall. The victim was badly burnt and had lacerations across the torso. Local law enforcement questioned Derek, who asserts that he last saw Tom alive operating his chicken stand at 7:30PM before leaving for a smoke break and never returning. The body was eventually found at 10:26PM, suggesting the murder took place between 8-10PM. He was released as they were unable to find reasonable doubt in his story."
+
+transform alpha_dissolve:
+    alpha 0.0
+    linear 0.5 alpha 1.0
+    on hide:
+        linear 0.5 alpha 0.0
+
+screen countdown:
+    on "show" action Function(lambda: setattr(store, "accusation_mode", True))
+    timer 0.01 repeat True action If(time>0, true=SetVariable('time', time-0.01),false=[Hide('countdown'), Jump('tutorials')])
+    bar value time range 600 xalign 0.9 yalign 0.1 xmaximum 300 at alpha_dissolve
 
 #stephen Scene 1
 you: "Hey kid, you're not in trouble. I just want to talk to you."
