@@ -33,6 +33,7 @@ define met_shannon = False
 image bg_storefront = "images/mall_storefront.png"
 image bg_fountain = "images/mall_fountain.png"
 image bg_booth = "images/mall_booth.png"
+image bg black_screen = "images/blackscreen.png"
 
 image daniel neutral = "images/Daniel1WithPillar.png"
 image daniel excited = "images/Daniel2WithPillar.png"
@@ -55,13 +56,17 @@ image stephen neutral = "images/Stephen_Neutral.png"
 image stephen thinking = "images/Stephen_Thinking.png"
 
 
+transform resize:
+    size (900, 1200)
+    xcenter 0.5
+
 
 
 # The game starts here.
 
 label start:
     scene bg black_screen
-
+    play music "audio/Detective Theme Loop.mp3"
     show text "It is Halloween night. The year is 2003."
     with fade
     pause 3
@@ -93,6 +98,7 @@ label mall_beginning:
 label mall_storefront:
     
     scene bg_storefront
+    show screen button
 
     menu:
         "Talk to Stephen" if met_stephen:
@@ -111,6 +117,7 @@ label mall_storefront:
 label mall_fountain:
 
     scene bg_fountain
+    show screen button
 
     menu:
         "Talk to Daniel" if met_daniel:
@@ -129,6 +136,7 @@ label mall_fountain:
 label mall_booth:
 
     scene bg_booth
+    show screen button
 
     menu:
         "Talk to Derek" if met_derek:
@@ -147,7 +155,7 @@ label mall_booth:
 label stephen_1:
 
     scene bg_storefront
-
+    show stephen neutral at resize
     $ met_stephen = True
 
     you "Hey kid, you're not in trouble. I just want to talk to you."
@@ -166,7 +174,8 @@ label stephen_1:
 label stephen_menu:
     
     scene bg_storefront
-
+    show stephen neutral at resize
+    show screen button
     stephen "Hello again officer. How is your investigation going, sir?"
     you "It could be better. I have some more questions to ask you."
     stephen "I'll help however I can, sir."
@@ -183,7 +192,7 @@ label stephen_menu:
 label stephen_2:
 
     scene bg_storefront
-
+    show stephen thinking at resize
     $ talked_to_stephen_about_madison = True
     
     "Where were you the night of October 7th?"
@@ -207,7 +216,7 @@ label stephen_2:
 label stephen_3:
 
     scene bg_storefront
-
+    show stephen thinking at resize
     you "Where were you on October 15th?"
     stephen "…"
     you "Stephen?"
@@ -222,7 +231,7 @@ label stephen_3:
 
 label stephen_3_1:
     scene bg_storefront
-
+    show stephen neutral at resize
     you "When do you get picked up?"
     stephen "My parents know to always get me exactly at 5:30PM every Monday, Wednesday, and Friday. Holidays excepted of course"
 
@@ -230,7 +239,7 @@ label stephen_3_1:
 
 label stephen_3_2:
     scene bg_storefront
-    
+    show stephen neutral at resize
     you "Did you do anything else that night?"
     stephen "Nothing that I don't normally do, officer. I ate dinner, did my homework, and was in bed by bedtime."
     you "And what time would that be?"
@@ -240,7 +249,7 @@ label stephen_3_2:
 
 label stephen_3_end:
     scene bg_storefront
-
+    show stephen neutral at resize
     you "I see. I'll come back if I have any more questions. Take care of yourself."
     stephen "Of course, officer."
 
@@ -249,7 +258,7 @@ label stephen_3_end:
 label stephen_4:
 
     scene bg_storefront
-
+    show stephen neutral at resize
     you "What were you doing last Thursday?"   
     stephen "I was eating ice cream, officer. Mint chocolate chip. Here in the mall with my parents."
     you "What time was this?"
@@ -263,8 +272,17 @@ label stephen_4:
     jump mall_storefront
 
 label stephen_5:
+    scene bg_storefront
+    show stephen neutral at resize
+    you "I'm arresting you on suspicion of murder. You're coming with me."
+    stephen "Officer, surely there must be some sort of mistake?"
+    narrator "You tackle Stephen to the ground and handcuff him before he can escape."
+    scene bg_storefront with fade
+    jump stephen_6
 
-    scene bg black_screen
+label stephen_6:
+
+    scene bg black_screen with dissolve
 
     show text "You escorted Stephen back to the police station. While cooperative before, at the station he refused to speak without his parents present."
     with fade
@@ -283,9 +301,9 @@ label stephen_5:
 label madison_1:
 
     scene bg_booth
-
+    show madison neutral at resize
     $ met_madison = True
-
+    play sound "audio/madison.mp3"
     you "Excuse me, may I have a word?"
     madison "Oh? Oh, yes, what is it?"
     you "Someone's awfully quiet this Halloween night."
@@ -296,7 +314,7 @@ label madison_1:
             jump madison_1_1
         "Could be worse":
             jump madison_1_2
-    
+    """
     Choice1 "Yeah, that's fair"
     madison "Besides, I don't think anyone really wants me talking"
     
@@ -308,10 +326,11 @@ label madison_1:
     madison "Yeah, I heard about them. Quite a frightening thought "
     you "I'll get back to you if I have any more questions"
     madison "Oh, sure"
-
+    """
 label madison_1_1:
     scene bg_booth
-
+    show madison scared at resize
+    play sound "audio/madison.mp3"    
     you "Yeah, that's fair"
     madison "Besides, I don't think anyone really wants me talking"
 
@@ -319,7 +338,8 @@ label madison_1_1:
 
 label madison_1_2:
     scene bg_booth
-
+    show madison scared at resize
+    play sound "audio/madison.mp3"
     you "Could be worse"
     madison "Well, I don't think there's anywhere louder than this place on Halloween night."
 
@@ -327,6 +347,8 @@ label madison_1_2:
 
 label madison_1_end:
     scene bg_booth
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
 
     you "you come here alone?"
     madison "Yeah… I've never really been good with others."
@@ -340,6 +362,9 @@ label madison_1_end:
 label madison_menu:
     
     scene bg_booth
+    show madison happy at resize
+    show screen button
+    play sound "audio/madison.mp3"
 
     madison "Oh, hi… good to see you again"
     menu:
@@ -355,7 +380,8 @@ label madison_menu:
 label madison_2:
 
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Where were you on the night of October 23rd?"
     madison "I was in the mall, just like tonight…"
     you "What were you doing here?"
@@ -370,7 +396,8 @@ label madison_2:
 
 label madison_2_1:
     scene bg_booth
-
+    show madison happy at resize
+    play sound "audio/madison.mp3"
     you "What do you listen to?"
     madison "Oh, it's a small band called My Chemical Romance"
     madison "They just released their first album, I've been listening to it nonstop"
@@ -380,7 +407,8 @@ label madison_2_1:
 
 label madison_2_2:
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Any other stores you visited?"
     madison "I just checked out the classics section and Barnes and Noble"
     madison "I was really just browsing. I kinda left after eating dinner"
@@ -389,7 +417,8 @@ label madison_2_2:
 
 label madison_2_end:
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Have you noticed anything about the booths that night?"
     madison "Well, the fried chicken stand was unoccupied when I got there… I suppose that was when… you know."
     madison "I was gonna get some chicken for dinner that night, but it was empty, so I just got a sandwich at Sandy's."
@@ -403,7 +432,8 @@ label madison_2_end:
 label madison_3:
     
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Where were you on the night of October 15th?"
     madison "I was at a friend's house. We have this literature club we do every Wednesday. We just read and listen to music. "
     you "Were you at the town square at any point that day?"
@@ -420,7 +450,8 @@ label madison_3:
 label madison_3_1:
 
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Did you see anything suspicious while there?"
     madison "Not really. I saw the moon sales guy heading into the bar before I left, but that's all really. Never thought I'd see him outside of the mall."
 
@@ -429,7 +460,8 @@ label madison_3_1:
 label madison_3_2:
 
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Is there anyone who can verify your presence?"
     madison "you can go talk to some of my friends. I think I saw them leave a while ago though."
 
@@ -438,7 +470,8 @@ label madison_3_2:
 label madison_3_end:
 
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Okay, I think that's it for now"
     you "I'll get back to you if I have any more questions"
     madison "Oh, sure"
@@ -449,19 +482,41 @@ label madison_3_end:
 label madison_4:
 
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you  "What can you tell me about the murder of Dorothy Williams?"
     madison "Oh right, Veronica's mother… It's quite awful what happened to her."
     you "What was your relationship with Veronica Williams?"
     madison "Well, she was always picking on me since we were in elementary school. She kept calling me \"half-developed\". It was horrible."
-    Choice1 "Do you think she knows how it feels now?"
+    menu:
+        "Do you think she knows how it feels now?":
+            jump madison_4_11
+        "I'm sorry about that":
+            jump madison_4_12
+
+label madison_4_11:
+    scene bg_booth
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
+    you "Do you think she knows how it feels now?"
     madison "Well, she was always horrible to everyone, thought she was better than us just because she's pretty. Maybe now, she'll be a bit more sympathetic to everyone."
-    Choice2 "I'm sorry about that"
+    jump madison_4_mid1
+
+label madison_4_12:
+    scene bg_booth
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
+    you "I'm sorry about that"
     madison "Yeah. Can't imagine what she's going through now, losing her mother like that."
+    jump madison_4_mid1
+
+label madison_4_mid1:
+    scene bg_booth
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Where were you that night?"
     madison "Oh, I skipped the parent teacher conference. My grades are pretty good, so there wasn't really a need for me to be there, you know?"
     madison "I was at home all night checking my picture comments on MySpace."
-
     menu:
         "That's a lie. I've got a testimony saying you were seen at the conference that night." if talked_to_stephen_about_madison:
             jump madison_4_1
@@ -471,7 +526,8 @@ label madison_4:
 label madison_4_1:
     
     scene bg_booth
-
+    show madison scared at resize
+    play sound "audio/madison.mp3"
     you "That's a lie. I've got a testimony saying you were seen at the conference that night."
     madison "What? Who told- Alright, I lied!"
     madison "Veronica and her friends were being horrible to me that night. The night it happened…"
@@ -486,13 +542,15 @@ label madison_4_1:
 label madison_4_2:
     
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     jump madison_4_mid
 
 label madison_4_mid:
 
     scene bg_booth
-
+    show madison scared at resize
+    play sound "audio/madison.mp3"
     madison "Is there… anything else?"
 
     menu:
@@ -504,7 +562,8 @@ label madison_4_mid:
 
 label madison_4_3:
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Tell me more about Dorothy."
     madison "Well, Veronica always said she was following her mother's footsteps, so I always saw her as an old cheerleader. She was quite the big name in our school. "
     madison "I heard people say that no one could work up a crowd like her."
@@ -513,7 +572,8 @@ label madison_4_3:
 
 label madison_4_4:
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "Who would wish Dorothy any harm?"
     madison "I'm not quite sure… Veronica was pretty popular, so I guess she'd have a lot of people who have it out for her"
     madison "But I don't know if there would be anyone who's got something against her mom."
@@ -522,7 +582,8 @@ label madison_4_4:
 
 label madison_4_end:
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "I believe that's all"
     you "I'll get back to you if I have any more questions"
     madison "Oh, sure"
@@ -532,7 +593,8 @@ label madison_4_end:
 label madison_5:
 
     scene bg_booth
-
+    show madison neutral at resize
+    play sound "audio/madison.mp3"
     you "So you're really into literature huh."
     madison "Yeah..."
     you "Might I ask why?"
@@ -551,8 +613,21 @@ label madison_5:
     madison "Oh, sure"
 
 label madison_6:
+    scene bg_booth
+    show madison scared at resize
+    play sound "audio/madison.mp3"
+    you "I'm arresting you on suspicion of murder. You're coming with me."
+    madison "Wait, what? This must be some kind of mistake!"
+    madison "Please, I trusted you! I didn't do anything wrong I swear!"
+    you "You can defend yourself all you want at the station"
+    narrator "You tackle Madison to the ground and handcuff her before she can escape"
+    scene bg_booth with fade
+    jump madison_7
 
-    scene bg black_screen
+
+label madison_7:
+
+    scene bg black_screen with dissolve
 
     show text "you escorted Madison back to the police station and questioned her all night."
     with fade
@@ -571,7 +646,7 @@ label madison_6:
 label george_1:
 
     scene bg_fountain
-
+    show george mad at resize
     $ met_george = True
 
     george "You! Hey you!"
@@ -587,7 +662,7 @@ label george_1:
 label george_1_1:
 
     scene bg_fountain
-
+    show george madder at resize
     $ are_korean = True
 
     you "Maybe I am"
@@ -598,7 +673,7 @@ label george_1_1:
 label george_1_2:
 
     scene bg_fountain
-
+    show george mad at resize
     $ are_korean = False
 
     you "No."
@@ -609,7 +684,7 @@ label george_1_2:
 label george_1_end:
 
     scene bg_fountain
-
+    show george madder at resize
     you "You got something against dokkaebis?"
     george "Hell yeah I do! I ain't fought a war just to have the bastards I defended my country against livin here like it's nothin'."
     you "One of them was killed a few weeks ago."
@@ -624,7 +699,8 @@ label george_1_end:
 
 label george_menu:
     scene bg_fountain
-
+    show george mad at resize
+    show screen button
     george "Ehh?"
     menu:
         "Ask about murder of Dorothy":
@@ -641,7 +717,7 @@ label george_menu:
 label george_2:
 
     scene bg_fountain
-
+    show george mad at resize
     you "Where were you on the night of October 23th?"
     george "Well I was at the mall, like I am right now. Shopping for some o' that new technology all the youngsters are ravin' about."
     you "What might that be?"
@@ -658,7 +734,7 @@ label george_2:
 label george_2_1:
     
     scene bg_fountain
-
+    show george madder at resize
     you "Anything else suspicious that you've seen?"
     george "Tell you what I've seen. That damn Honey Islander's been acting real fishy lately. I know his kind when I see it. "
     george "They're all a bunch of good for nothin' weirdos. Nothing's felt right since they started showing up in droves. I know I saw him running around trespassing in the employees room last week."
@@ -668,7 +744,7 @@ label george_2_1:
 label george_2_2:
     
     scene bg_fountain
-
+    show george mad at resize
     you "Anyone else you've seen in the mall around that time?"
     george "I saw a werewolf hanging around during the early evening. Looked real gnarly, like she wasn't fully a wolf yet."
     george "Now I don't know what's up with her, but werewolves, those are real Americans right there. Not like any of the riffraff that claim they're one of us."
@@ -678,7 +754,7 @@ label george_2_2:
 label george_2_mid:
     
     scene bg_fountain
-
+    show george mad at resize
     you "I'll keep this in mind."
     menu:
         "How long were you there?":
@@ -689,7 +765,7 @@ label george_2_mid:
 label george_2_3:
     
     scene bg_fountain
-
+    show george mad at resize
     you "How long were you there?"
     george "I don't know, like half past eight?"
 
@@ -698,7 +774,7 @@ label george_2_3:
 label george_2_4:
     
     scene bg_fountain
-
+    show george mad at resize
     you "What did you do after?"
     george "I went home, and tried to see if I could get the damn thing to work. Everything's so complicated these days, why can't we go back to the old ways of using the fireplace?"
     
@@ -707,7 +783,7 @@ label george_2_4:
 label george_2_end:
     
     scene bg_fountain
-    
+    show george mad at resize   
     you "Alright, thanks for the help."
     george "Heh??"
 
@@ -716,7 +792,7 @@ label george_2_end:
 label george_3:
 
     scene bg_fountain
-
+    show george madder at resize
     you "What can you tell me about the murder of Sora Kim?"
     george "Ehh! The dokkaebi?! That damn trash gnome had it coming!"
     you "Is that an admission of guilt? Or…"
@@ -737,7 +813,7 @@ label george_3:
 label george_3_1:
 
     scene bg_fountain
-
+    show george madder at resize
     you "What were you doing at 11PM?"
     george "Well I was sleeping! What are you, expectin' an ol' codger like me to be awake at the witching hour?!"
     you "That's not the witching hour, but noted."
@@ -747,7 +823,7 @@ label george_3_1:
 label george_3_2:
 
     scene bg_fountain
-
+    show george mad at resize
     you "Why were you watching that?"
     george "Calms my nerves a bit"
 
@@ -756,7 +832,7 @@ label george_3_2:
 label george_3_end:
 
     scene bg_fountain
-
+    show george madder at resize
     you "Do you know of anyone who would wish this man harm?"
     george "I tell ya, that's a lotta people"
     if are_korean:
@@ -772,7 +848,7 @@ label george_3_end:
 label george_4:
 
     scene bg_fountain
-
+    show george mad at resize
     you "Where were you on the night of October 7th?"
     george "Eh that was a lifetime ago. I was at the school."
     menu:
@@ -784,7 +860,7 @@ label george_4:
 label george_4_1:
     
     scene bg_fountain
-
+    show george mad at resize
     you "What were you doing there?"
     george "There was a parent-teacher conference. My niece was sick, so I went on behalf of her daughter."
 
@@ -793,7 +869,7 @@ label george_4_1:
 label george_4_2:
     
     scene bg_fountain
-
+    show george mad at resize
     you "You realize that was the site of a gruesome murder?"
     george "Ehhh? First I ever heard of it. When was that?"
     you "October 7th."
@@ -803,7 +879,7 @@ label george_4_2:
 label george_4_mid:
     
     scene bg_fountain
-
+    show george mad at resize
     you "How long were you in the building for?"
     george "Roughly 6-9?"
     george "Those damn gorgons held me up. Wouldn't shut up about sculpturing. Felt like I was stone for three hours."
@@ -822,7 +898,7 @@ label george_4_mid:
 label george_4_3:
     
     scene bg_fountain
-
+    show george mad at resize
     you "When did they leave?"
     george "I think that goatwoman left around 9PM?"
 
@@ -831,7 +907,7 @@ label george_4_3:
 label george_4_4:
     
     scene bg_fountain
-
+    show george madder at resize
     you "Would any of them have a reason to harm the victim?"
     george "How should I know?! I tell you what, it's probably some damn foreigner tryna rid this country of its rightful population!"
 
@@ -839,7 +915,7 @@ label george_4_4:
 label george_4_end:
     
     scene bg_fountain
-
+    show george mad at resize
     you "I'll keep this in mind."
     george "Heh??"
 
@@ -849,7 +925,7 @@ label george_4_end:
 label george_5:
 
     scene bg_fountain
-
+    show george mad at resize
     you "You said you fought in the war?"
     george "What else do you need to know? Served my country well in the war. Drafted back in '51. Honorable discharge. "
     george "Killed a whole lotta dokkaebis, and seen some of my best friends die at their hand."
@@ -872,10 +948,22 @@ label george_5:
     
     jump mall_fountain
 
-
 label george_6:
+    scene bg_fountain
+    show george madder at resize
+    
+    you "I'm arresting you on suspicion of murder. You're coming with me."
+    george "What the hell?!"
+    george "I knew it! There was something fishy about you from the start! Your kind's made this country hell to live on, you hear me?!"
+    george "Hard working men like me have to suffer because of freaks like you!"
+    you "Save the insults for the interrogation, gramps."
+    narrator "You tackle George to the ground and handcuff him before he can escape."
+    scene bg_booth with fade
+    jump derek_7
 
-    scene bg black_screen
+label george_7:
+
+    scene bg black_screen with dissolve
 
     show text "You escorted George back to the police station and questioned him all night."
     with fade
@@ -894,7 +982,7 @@ label george_6:
 label daniel_1:
 
     scene bg_fountain
-
+    show daniel neutral at resize
     $ met_daniel = True
 
     you "Hello, I'd like to ask you a few questions."
@@ -908,11 +996,13 @@ label daniel_1:
     you "I'm with the local police department, it's alright."
     daniel "daniel…"
     you "Daniel! That's a great name. Like Daniel Radcliffe. you know, like Harry Potter?"
+    show daniel excited at resize
     daniel "(jumps out from behind the pillar startlingly quickly) Daniel Radcliffe? I love Daniel Radcliffe! I love how he isn't afraid to do what no one else will do for the sake of a great show! "
     daniel "If you ask me, that's a great performer. Someone who will put it all on the line, dignity and prestige and fame and wealth, everything. For the sake of the performance."
     daniel "But not just the performance! Oh no. Just for performance… that would be so… gaudy. "
     daniel "Horrible. No, no. Radcliffe. He's different. He, he, he just. He pokes at your brain and asks you, \"Do you believe me? I am the world's strangest person, the world's strangest THING. BELIEVE ME.\""
     you "Yeah, he's a… you know what you said. A great performer. Anyways, I'd love to ask you a few questions, Daniel. Just a few it won't tak-"
+    show daniel neutral at resize
     daniel "(slinks back behind the pillar) …"
     you "Okay… I'll come back to ask you a few questions later, alright Daniel?"
     daniel "…"
@@ -922,7 +1012,8 @@ label daniel_1:
 label daniel_menu:
     
     scene bg_fountain
-
+    show daniel neutral at resize
+    show screen button
     you "Hey Daniel. I'd like to ask you a few questions if that's alright."
     daniel "…ok"
 
@@ -941,8 +1032,10 @@ label daniel_menu:
 label daniel_2:
 
     scene bg_fountain
-
+    show daniel neutral at resize
     you  "It seems like you really like Daniel Radcliffe. Are you a performer too?"
+    show daniel excited at resize
+
     daniel "(jumps out from behind the pillar) I LOVE PERFORMING. It's art, it's gorgeous, it's beautiful. There isn't anything like it."
     menu:
         "That's really cool! Are you a dancer?":
@@ -953,7 +1046,7 @@ label daniel_2:
 label daniel_2_1:
 
     scene bg_fountain
-
+    show daniel excited at resize
     you "That's really cool! Are you a dancer?"
     daniel "No, no. Dancers don't get enough performances. I need more."
     daniel "I'm a cheerleader. We get to perform at every game, and after school every day we practice outdoors."
@@ -964,6 +1057,7 @@ label daniel_2_1:
 label daniel_2_2:
 
     scene bg_fountain
+    show daniel excited at resize
 
     you "That's really cool! Are you an actor in your school's theater program?"
     daniel "Acting? In my school's theater program?"
@@ -980,8 +1074,9 @@ label daniel_2_2:
 label daniel_2_end:
 
     scene bg_fountain
-
+    show daniel excited at resize
     you "Alright… I'll come back if I have more questions for you."
+    show daniel neutral at resize
     daniel "(goes back to hiding behind the pillar)...okay"
 
     jump mall_fountain
@@ -989,7 +1084,7 @@ label daniel_2_end:
 label daniel_3:
 
     scene bg_fountain
-
+    show daniel neutral at resize
     you "Do you remember where you were the night of October 7th?"
     daniel "…school. parent-teacher conference…"
     you "And how long were you there for?"
@@ -1009,6 +1104,7 @@ label daniel_3:
 label daniel_3_1:
     
     scene bg_fountain
+    show daniel neutral at resize
 
     you "Did you see if any of them stayed past 8?"
     daniel "…no… everyone left at the same time."
@@ -1018,7 +1114,7 @@ label daniel_3_1:
 label daniel_3_2:
     
     scene bg_fountain
-
+    show daniel neutral at resize
     you "Who's Madison?"
     daniel "…"
     daniel "student… werewolf."
@@ -1034,7 +1130,7 @@ label daniel_3_2:
 label daniel_3_end:
     
     scene bg_fountain
-
+    show daniel neutral at resize
     you "I see. Well thanks for speaking with me, Daniel."
     you "I'll return if I have more questions."
     daniel "…okay."
@@ -1044,8 +1140,9 @@ label daniel_3_end:
 label daniel_4:
 
     scene bg_fountain
-
+    show daniel neutral at resize
     you "Where were you on October 15th?"
+    show daniel excited at resize
     daniel "<pops out from behind the pillar> I was home of course. Practicing my cheer routines"
     you "Were you at school? October 14th was a Wednesday."
     daniel "Well, yes obviously. Cheer practice is after school."
@@ -1059,8 +1156,9 @@ label daniel_4:
 label daniel_4_1:
 
     scene bg_fountain
-
+    show daniel excited at resize
     you "I have someone who claims they saw you at the town square that day. Care to explain?"
+    show daniel neutral at resize
     daniel "(jumps back behind the pillar) …"
     daniel "I forgot…"
     daniel "I walk through the town square to get home…"
@@ -1071,7 +1169,7 @@ label daniel_4_1:
 label daniel_4_2:
 
     scene bg_fountain
-
+    show daniel excited at resize
     you "Were you able to get that move down?"
     daniel "Oh yes! The process was quite… inelegant. But the result was well worth it. Beautiful."
     you "I'm glad it went well!"
@@ -1082,7 +1180,7 @@ label daniel_4_2:
 label daniel_4_end:
 
     scene bg_fountain
-
+    show daniel neutral at resize
     you "Well that's all I have for now. I'll talk to you again if I have any more questions."
     daniel "…okay."
 
@@ -1091,7 +1189,7 @@ label daniel_4_end:
 label daniel_5:
 
     scene bg_fountain
-
+    show daniel neutral at resize
     you "Where were you on the night of October 23rd?"
     daniel "at the mall."
     you "Are you aware there was a murder that night?"
@@ -1112,8 +1210,23 @@ label daniel_5:
     jump mall_fountain
 
 label daniel_6:
+    scene bg_fountain
+    show daniel neutral at resize
+    daniel "…"
+    daniel "*pops out from behind the pillar really fast*"
+    show daniel murderous at resize 
+    daniel "DIE THEN."
+    narrator "Daniel lunges at you, but you're ready for it. You wrestle him to the ground and handcuff him."
+    you  "You have the right to remain silent. Anything you say can and will be used against you in a court of law. You have the right to talk to a lawyer for advice before we ask you any questions. You have the ri-"
+    daniel "DON'T READ THIS DRIVEL TO ME. A SCRIPT?? PUTRID. YOU DISGUST ME."
+    you "If you cannot afford a lawyer, one will be appointed for you before any questioning if you wish. If you decide to answer questions now without a lawyer present, you have the right to stop answering at any time."
+    narrator "Daniel fights the whole way as you take him to the police station."
+    scene bg_fountain with fade
+    jump daniel_7
 
-    scene bg black_screen
+
+label daniel_7:
+    scene bg black_screen with dissolve
 
     show text "Daniel is convicted of all three murders."
     with fade
@@ -1132,9 +1245,22 @@ label daniel_6:
     pause 5 
     show text "Killer captured."
 
-label daniel_7:
+label daniel_8:
+    scene bg_fountain
+    narrator "You try to sift your way through the crowd, but end up in a large crush of visitors. You can’t help but feel an ominous pair of eyes on you."
+    show daniel neutral at resize
+    daniel "..."
+    daniel "*pops out from behind the pillar really fast*"
+    show daniel murderous at resize 
+    daniel "YOU DIE NOW."
+    narrator "Daniel lunges at you, and quickly plunges a knife into your chest. The last thing you see is Daniel’s face glancing at you, manically laughing as he continues his flurry of stabs while you take your last breath."    
+    daniel "It's all a part of the show..."
+    scene bg_fountain with fade
+    jump daniel_9
 
-    scene bg black_screen
+label daniel_9:
+
+    scene bg black_screen with dissolve
 
     show text "Your investigation has probed the suspicion of the killer, placing you directly into their crosshairs."
     with fade
@@ -1155,7 +1281,8 @@ label derek_1:
     scene bg_booth
 
     $ met_derek = True
-
+    show derek distressed at resize
+    play sound "audio/Derek1.mp3"
     #holding out sunglasses
     derek "Hey champ! Care for a pair?"
     you "What? "
@@ -1169,7 +1296,8 @@ label derek_1:
 label derek_1_1:
     
     scene bg_booth
-
+    show derek distressed at resize
+    play sound "audio/Derek1.mp3"
     you "Sure, I'm busy at the moment, but I'll be back"
     derek "Oh joy! A prospective customer! Ya won't regret this pal, I promise you that!"
 
@@ -1178,9 +1306,11 @@ label derek_1_1:
 label derek_1_2:
     
     scene bg_booth
-
+    show derek distressed at resize
     you "No thanks…"
     #takes off sunglasses
+    show derek neutral at resize
+    play sound "audio/Derek3.mp3"
     derek "Oh.. I see."
     "<Sad Trombone>"
     derek "Oh don't mind me, that's just the sound of my heart getting kicked down an elevator shaft. Sinking deeper and deeper into the darkest pits of hell."
@@ -1190,7 +1320,8 @@ label derek_1_2:
 label derek_1_mid:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"
     you "Anyway, what's your deal?"
     derek "You mean, you don't know? Why I'm Derek, of course! Sunglass producer extraordinaire! "
     derek "I'm kind of a big deal around here"
@@ -1207,7 +1338,8 @@ label derek_1_mid:
 label derek_1_3:
     
     scene bg_booth
-    
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
     you "So you sell sunglasses?"
     derek "Guilty as charged! No other retailer can guarantee you the Derek seal of approval I'll tell you that!"
 
@@ -1216,7 +1348,9 @@ label derek_1_3:
 label derek_1_4:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "How's business?"
     derek "Absolutely splendid! We sell out our stock every week! The customers can't get enough of them!"
     narrator "You doubt that."
@@ -1228,6 +1362,8 @@ label derek_1_4:
 label derek_1_end:
     
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     you "Well, carry on, but I have a few questions to ask you when I get back."
     derek "Don't be a stranger! And make sure you tell all your friends that Derek's shades are where it's at!"
@@ -1237,7 +1373,10 @@ label derek_1_end:
 
 label derek_menu_returning:
     scene bg_booth
-
+    show derek neutral at resize
+    show screen button
+    play sound "audio/Derek1.mp3"    
+    
     derek "Why if it isn't my favorite prospective customer! What can I do for you?"
     menu:
         "Ask about the murder of Dorothy":
@@ -1254,7 +1393,10 @@ label derek_menu_returning:
 label derek_menu:
     
     scene bg_booth
-        
+    show derek neutral at resize
+    show screen button
+    play sound "audio/Derek1.mp3"    
+    
     menu:
             "Ask about the murder of Dorothy":
                 jump derek_4
@@ -1271,6 +1413,8 @@ label derek_menu:
 label derek_2:
 
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     you "What can you tell me about the murder of Tom Chatawa?"
     derek "Oh, it's all so terrible… The coppers booked me last week for questioning. They think I did it! It's ridiculous!"
@@ -1284,6 +1428,8 @@ label derek_2:
 label derek_2_1:
 
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     you "I heard you and him were close"
     derek "Well, close isn't the word I would use…"
@@ -1293,6 +1439,8 @@ label derek_2_1:
 label derek_2_2:
 
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     you "I'm investigating these killings. <increases suspicion>"
     derek "On your own? Or…"
@@ -1304,6 +1452,8 @@ label derek_2_2:
 label derek_2_mid:
 
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     derek "His chicken was the talk of the town! \"No one could make fried chicken like ol' Tom Chatawa!\" Sooner or later, that stand became all anyone ever wanted to go to in this place. "
     derek "I'd be lying if I said I was crying over spilled milk. The lad did not deserve what happened to him, "
@@ -1317,6 +1467,8 @@ label derek_2_mid:
 label derek_2_3:
 
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     you "Where were you at the time he was killed?"
     derek "I already told the other officers this. I was running my stand as usual, you know how it is. Peak mall hours are down by 10, so I was already on my way out when they found him."
@@ -1328,6 +1480,8 @@ label derek_2_3:
 label derek_2_4:
 
     scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
 
     you "Who else was in the mall at the time of the killing? Anyone here you recognize from that night?"
     derek "Well, I'm not exactly keeping track of every face I see. If I recall correctly, I believe I noticed that one goatwoman near Spirit Halloween shopping around last week. She was here around 7 to 8 and I didn't see her after. There was also this weird kid who looked quite empty inside. Probably some elementary schooler. I think I saw him over there right now. I saw him leave the mall right as the sun was going down."
@@ -1339,7 +1493,9 @@ label derek_2_4:
 label derek_2_end:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "I think that's enough. Thank you, Derek."
     derek "Anything else you want to ask me?"
 
@@ -1349,7 +1505,9 @@ label derek_2_end:
 label derek_3:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "Where were you on the night of October 15th?"
     derek "Oh, that was two weeks ago, I'm not sure if I fully remember…"
     derek "I believe I was out drinking at the local bar."
@@ -1362,7 +1520,9 @@ label derek_3:
 label derek_3_1:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "Near the town square? <increase suspicion>"
     derek "Well yeah, the best places are there. The best moonshine in town."
     you "So was the body of a dokkaebi."
@@ -1373,7 +1533,9 @@ label derek_3_1:
 label derek_3_2:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "When was this?"
     derek "I think I was up till midnight. I was on a real bender."
     you "Do you remember anything else that might have happened that night?"
@@ -1384,7 +1546,9 @@ label derek_3_2:
 label derek_3_mid:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "Was there anyone you remember running into?"
     derek "Well, there were a bunch of high schoolers out too, probably drinking. I mean, what are you gonna do? They're all bound to sooner or later."
     menu:
@@ -1396,7 +1560,9 @@ label derek_3_mid:
 label derek_3_3:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "One of them happen to be a werewolf?"
     derek "I think I did see a couple of werewolves. You know, all furry and stuff. Bunch of them throughout the night."
 
@@ -1405,7 +1571,9 @@ label derek_3_3:
 label derek_3_4:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     $ saw_daniel_at_bar = True
 
     you "One of them happen to be a swamp monster? <increase suspicion>"
@@ -1416,7 +1584,9 @@ label derek_3_4:
 label derek_3_end:
     
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "When did you see them?"
     derek "I'm telling you I don't remember much, but I guess it was around the time I was there, so sometime between the hours of 8-12."
     you "I think that's all. Thank you, Derek."
@@ -1428,7 +1598,9 @@ label derek_3_end:
 label derek_4:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "Where were you on the night of October 7th?"
     derek "That was quite a while ago, I'm not sure if I remember."
     derek "Oh yes, I was heading home. I wrapped up, and took the bus back to my apartment."
@@ -1443,7 +1615,9 @@ label derek_4:
 label derek_4_1:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "What time was this?"
     derek "I think it was around 10PM."
 
@@ -1452,7 +1626,9 @@ label derek_4_1:
 label derek_4_2:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "And what did you do then?"
     derek "I took a shower and went to sleep. Gotta get my beauty sleep to sell shades!"
 
@@ -1461,7 +1637,9 @@ label derek_4_2:
 label derek_4_end:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "And where do you live exactly?"
     derek "You know I'm not gonna answer that."
     derek "I live around Armour Hill"
@@ -1474,7 +1652,9 @@ label derek_4_end:
 label derek_5:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek3.mp3"    
+    
     you "Awfully low turnaround today isn't it?"
     derek "Oh well, it's just typical seasonal blues! It's Halloween after all! Customers flock in droves to the Party City this time of year!"
     you "You told me earlier that your business is flourishing, and yet it's a Friday night and your stock seems to be in abundance. you've sold nothing."
@@ -1493,7 +1673,9 @@ label derek_5:
 label derek_5_1:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "Do you know of anyone who would wish harm upon these owners? <increase suspicion>"
     derek "I'm not too sure. I know this one old mothman that hates anyone and everyone, but I don't know if he'd have the capability to kill."
 
@@ -1502,7 +1684,9 @@ label derek_5_1:
 label derek_5_2:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "Would you have any reason to wish harm upon these owners?"
     derek "Of course not! I may wish them nothing but the most soul crushing failure, but I would never wish harm upon them!"
 
@@ -1511,15 +1695,29 @@ label derek_5_2:
 label derek_5_end:
 
     scene bg_booth
-
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
     you "I think that's enough. Thank you, Derek."
     derek "Anything else you wanna ask me?"
 
     jump derek_menu
 
 label derek_6:
+    scene bg_booth
+    show derek neutral at resize
+    play sound "audio/Derek1.mp3"    
+    
+    you "I'm arresting you on suspicion of murder. You're coming with me."
+    derek "Wait what?!"
+    derek "Surely this has gotta be some mistake!"
+    you "You can prove that after I take you in."
+    narrator "You tackle Derek to the ground and handcuff him before he can escape."
+    scene bg_booth with fade
+    jump derek_7
 
-    scene bg black_screen
+label derek_7:
+    scene bg black_screen with dissolve
 
     show text "You escorted Derek back to the police station and questioned him all night."
     with fade
@@ -1538,12 +1736,14 @@ label derek_6:
 label shannon_1:
 
     scene bg_storefront
-
+    show shannon neutral at resize
+    play sound "audio/shannon.mp3"
     $ met_shannon = True
 
     shannon "Oh my dearest me, look at you! Aren't you the most precious thing in the world?"
     shannon "What are you supposed to be, dear?"
     you "Ma'am, I'd like to ask you a few questions if you have the time. I'm investigating a potential serial killer."
+    show shannon excited at resize
     shannon "Oh wow! You have a backstory and everything! Now that's commitment to a costume!"
     shannon "You just don't get many people who are willing to really go all in on Halloween anymore. I remember when I was younger, oh! I loved Halloween. "
     shannon "I'd dress up with all my friends and we'd have ourselves a proper little party. I always loved the pumpkin pie, I still have it every year with my husband and my son, David and David Jr."
@@ -1560,7 +1760,9 @@ label shannon_1:
 label shannon_menu:
 
     scene bg_storefront
-
+    show shannon neutral at resize
+    play sound "audio/shannon.mp3"
+    show screen button
     shannon "Detective! You're back! I was wondering if I'd see you again tonight. Gotten any leads yet?"
     you "I'm working on it. I've got some questions for you if you don't mind."
     shannon "Not at all! Fire away!"
@@ -1578,7 +1780,8 @@ label shannon_menu:
 label shannon_2:
 
     scene bg_storefront
-
+    show shannon neutral at resize
+    play sound "audio/shannon.mp3"
     you "Where were you the night of October 7th?"
     shannon "Oh dear. That was a horrible night…"
     shannon "You've really done your research, haven't you, dear? Alright well I suppose I'll tell you."
@@ -1600,6 +1803,7 @@ label shannon_2:
     shannon "Please, call me Shannon. "
     shannon "Do you have any other questions for me?"
     you "Let me collect my thoughts and I'll let you know in a bit."
+    show shannon excited at resize
     shannon "Alright detective! Make sure you get lots of candy!"
 
     jump mall_storefront
@@ -1607,7 +1811,8 @@ label shannon_2:
 label shannon_3:
 
     scene bg_storefront
-
+    show shannon neutral at resize
+    play sound "audio/shannon.mp3"
     you "Do you remember what you were doing on October 15th?"
     shannon "Oh, now give me a second to think, detective. That was quite some time ago…"
     shannon "That was a weekday so I had to take Junior to school… David left bright and early as he always does…I had to take the trash out…I had to pick Junior up from school…"
@@ -1632,6 +1837,7 @@ label shannon_3:
     you "And did you leave your house for anything else afterwards?"
     shannon "Oh do you need more, detective?"
     you "No, I mean I don't need anything. I want the truth."
+    show shannon excited at resize
     shannon "Oh the truth! Well you should've said so!"
     shannon "Well then the truth is we had a perfectly pleasant night, Junior got tucked into bed and David and I had our nightly little whiskey chat."
     you "So to confirm, you didn't go out at all after you returned home?"
@@ -1645,7 +1851,8 @@ label shannon_3:
 label shannon_4:
 
     scene bg_storefront
-
+    show shannon neutral at resize
+    play sound "audio/shannon.mp3"
     you "Last Thursday night on October 23rd a man named Tom Chatawa was murdered in the parking lot of this mall. Do you remember what you were doing that day?"
     shannon "Oh Tom. He was a wonderful man. Come, come detective. Let us have a moment of silence for him."
     you "Alright ma'am …"
@@ -1670,6 +1877,7 @@ label shannon_4:
     shannon "There was Derek as well, but that was years ago. You know, I wouldn't be surprised if he had something to do with this! Something about jealousy or something what do you think, detective?"
     shannon "Isn't it strange that for both Dorothy and Tom something good happened to them before they were killed?"
     you "That is strange…"
+    show shannon excited at resize
     shannon "I know right! I'm pretty good at this detective stuff. Maybe that'll be my costume next year!"
     you "You've given me a lot to think about, thank you Shannon."
     you "I'll be back if I have any more questions for you."
@@ -1678,8 +1886,20 @@ label shannon_4:
     jump mall_storefront
 
 label shannon_5:
+    scene bg_storefront
+    show shannon neutral at resize
+    play sound "audio/shannon.mp3"
+    you "I'm arresting you on suspicion of murder. You're coming with me."
+    shannon "Oh dear! Are you being serious right now?"
+    you "I'm afraid so, Shannon. Please cooperate."
+    narrator "Shannon solemnly holds her wrists out. You tackle her to the ground and handcuff her before taking her to the station."
+    scene bg_storefront with fade
+    jump shannon_6
 
-    scene bg black_screen
+
+label shannon_6:
+
+    scene bg black_screen with dissolve
 
     show text "You escorted Shannon back to the police station and questioned her all night."
     with fade
@@ -1774,5 +1994,6 @@ transform alpha_dissolve:
 
 screen countdown:
     on "show" action Function(lambda: setattr(store, "accusation_mode", True))
-    timer 0.01 repeat True action If(time>0, true=SetVariable('time', time-0.01),false=[Hide('countdown'), Jump('tutorials')])
+    on "show" action Play("music", "/audio/Suspense Theme.mp3", loop=True, fadein=3)
+    timer 0.01 repeat True action If(time>0, true=SetVariable('time', time-0.01),false=[Hide('countdown'), Jump('daniel_8')])
     bar value time range 600 xalign 0.9 yalign 0.1 xmaximum 300 at alpha_dissolve

@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("F25GameJam")
+define config.name = _("Where Do Killers Hide?")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -61,8 +61,7 @@ define config.has_voice = True
 ## Uncomment the following line to set an audio file that will be played while
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
-
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "audio/F25GJ Intro.mp3"
 
 
 ## Transitions #################################################################
