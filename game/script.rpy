@@ -7,11 +7,11 @@ init python in mystore:
     def checkListForItem(id):
         if id not in seenList:
             seenList.append(id)
+            print(len(seenList))
     
     def checkListLength():
         #47 unique passages
-        #35
-        if len(seenList) >= 2:
+        if len(seenList) >= 35:
             renpy.show_screen("countdown")
 
 # Declare characters used by this game. The color argument colorizes the
@@ -27,8 +27,7 @@ define daniel = Character("Daniel")
 define derek = Character("Derek")
 define shannon = Character("Shannon")
 
-#600
-default time = 6
+default time = 600
 
 default accusation_mode = False
 
@@ -173,6 +172,7 @@ label stephen_1:
 
     scene bg_storefront
     show stephen neutral at resize
+    play sound "audio/Stephen.wav"
     with dissolve
     $ met_stephen = True
 
@@ -185,6 +185,7 @@ label stephen_1:
     you "Are you here with your parents?"
     stephen "Oh no, sir. Just me tonight."
     you "Just you? That can be dangerous. Make sure you're sticking with people you know alright? I'll be back with more questions."
+    play sound "audio/Stephen.wav"
     stephen "Will do, officer."
 
     jump mall_storefront
@@ -195,6 +196,7 @@ label stephen_menu:
     show stephen neutral at resize
     with dissolve
     show screen button
+    play sound "audio/Stephen.wav"
     stephen "Hello again officer. How is your investigation going, sir?"
     you "It could be better. I have some more questions to ask you."
     stephen "I'll help however I can, sir."
@@ -205,6 +207,8 @@ label stephen_menu:
             jump stephen_3
         "Ask about the murder of Tom":
             jump stephen_4
+        "Leave":
+            jump mall_storefront
         "Accuse him of murder" if accusation_mode:
             jump stephen_5
 
@@ -217,7 +221,7 @@ label stephen_2:
     $ mystore.checkListForItem(0)
     $ mystore.checkListLength()
     
-    "Where were you the night of October 7th?"
+    you "Where were you the night of October 7th?"
     stephen "That was the night of the parent-teacher conference. I attended with my caregivers and left promptly at 800PM alongside the rest of the students."
     you "Do you remember anyone else who was there that night?"
     stephen "I was with the rest of the team, the football team that is. I play quarterback for the school. "
@@ -231,6 +235,7 @@ label stephen_2:
     you "What time would you say this was?"
     stephen "Oh about 8:00PM. Same as the rest of the student body."
     you "Thank you for being so helpful, I think that'll be it for now."
+    play sound "audio/Stephen.wav"
     stephen "Of course."
 
     jump mall_storefront
@@ -242,6 +247,7 @@ label stephen_3:
     you "Where were you on October 15th?"
     stephen "..."
     you "Stephen?"
+    play sound "audio/Stephen.wav"
     stephen "Quiet officer. I'm trying to remember. What day of the week was October 15th?"
     you "That was a Wednesday."
     stephen "On Wednesdays I have football practice after school. After practice I always get picked up by my parents."
@@ -281,6 +287,7 @@ label stephen_3_end:
     scene bg_storefront
     show stephen neutral at resize
     you "I see. I'll come back if I have any more questions. Take care of yourself."
+    play sound "audio/Stephen.wav"
     stephen "Of course, officer."
 
     jump mall_storefront
@@ -300,6 +307,7 @@ label stephen_4:
     stephen "After finishing our confections I informed my parents of the homework I had yet to do, so we returned home hastily. I cannot state a specific time, in fear of being incorrect, but I can give a relative time."
     stephen "When we went home the sun was still shining."
     you "Thank you Stephen, that should be all for now. I'll return if I have any more questions."
+    play sound "audio/Stephen.wav"
     stephen "Of course."
 
     jump mall_storefront
@@ -337,7 +345,7 @@ label madison_1:
     show madison neutral at resize
     with dissolve
     $ met_madison = True
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "Excuse me, may I have a word?"
     madison "Oh? Oh, yes, what is it?"
     you "Someone's awfully quiet this Halloween night."
@@ -352,7 +360,7 @@ label madison_1:
 label madison_1_1:
     scene bg_booth
     show madison scared at resize
-    play sound "audio/madison.mp3"    
+    play sound "audio/Madison.wav"    
     you "Yeah, that's fair"
     madison "Besides, I don't think anyone really wants me talking"
 
@@ -361,7 +369,7 @@ label madison_1_1:
 label madison_1_2:
     scene bg_booth
     show madison scared at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "Could be worse"
     madison "Well, I don't think there's anywhere louder than this place on Halloween night."
 
@@ -370,7 +378,7 @@ label madison_1_2:
 label madison_1_end:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     you "you come here alone?"
     madison "Yeah... I've never really been good with others."
@@ -387,7 +395,7 @@ label madison_menu:
     show madison happy at resize
     with dissolve
     show screen button
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     madison "Oh, hi... good to see you again"
     menu:
@@ -397,6 +405,8 @@ label madison_menu:
             jump madison_3
         "Ask about the murder of Tom":
             jump madison_2
+        "Leave":
+            jump mall_booth
         "Accuse her of murder" if accusation_mode:
             jump madison_6
 
@@ -404,7 +414,7 @@ label madison_2:
 
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     you "Where were you on the night of October 23rd?"
     madison "I was in the mall, just like tonight..."
@@ -421,7 +431,7 @@ label madison_2:
 label madison_2_1:
     scene bg_booth
     show madison happy at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(4)
     $ mystore.checkListLength()
@@ -436,7 +446,7 @@ label madison_2_1:
 label madison_2_2:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(5)
     $ mystore.checkListLength()
@@ -450,7 +460,7 @@ label madison_2_2:
 label madison_2_end:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "Have you noticed anything about the booths that night?"
     madison "Well, the fried chicken stand was unoccupied when I got there... I suppose that was when... you know."
     madison "I was gonna get some chicken for dinner that night, but it was empty, so I just got a sandwich at Sandy's."
@@ -465,7 +475,7 @@ label madison_3:
     
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "Where were you on the night of October 15th?"
     madison "I was at a friend's house. We have this literature club we do every Wednesday. We just read and listen to music. "
     you "Were you at the town square at any point that day?"
@@ -483,7 +493,7 @@ label madison_3_1:
 
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(6)
     $ mystore.checkListLength()
@@ -497,7 +507,7 @@ label madison_3_2:
 
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(7)
     $ mystore.checkListLength()
@@ -511,7 +521,7 @@ label madison_3_end:
 
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "Okay, I think that's it for now"
     you "I'll get back to you if I have any more questions"
     madison "Oh, sure"
@@ -523,7 +533,7 @@ label madison_4:
 
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you  "What can you tell me about the murder of Dorothy Williams?"
     madison "Oh right, Veronica's mother... It's quite awful what happened to her."
     you "What was your relationship with Veronica Williams?"
@@ -537,7 +547,7 @@ label madison_4:
 label madison_4_11:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(8)
     $ mystore.checkListLength()
@@ -549,7 +559,7 @@ label madison_4_11:
 label madison_4_12:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(9)
     $ mystore.checkListLength()
@@ -561,7 +571,7 @@ label madison_4_12:
 label madison_4_mid1:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "Where were you that night?"
     madison "Oh, I skipped the parent teacher conference. My grades are pretty good, so there wasn't really a need for me to be there, you know?"
     madison "I was at home all night checking my picture comments on MySpace."
@@ -575,7 +585,7 @@ label madison_4_1:
     
     scene bg_booth
     show madison scared at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(10)
     $ mystore.checkListLength()
@@ -595,7 +605,7 @@ label madison_4_2:
     
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(11)
     $ mystore.checkListLength()
@@ -609,7 +619,7 @@ label madison_4_mid:
 
     scene bg_booth
     show madison scared at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     madison "Is there... anything else?"
 
     menu:
@@ -622,7 +632,7 @@ label madison_4_mid:
 label madison_4_3:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(12)
     $ mystore.checkListLength()
@@ -636,7 +646,7 @@ label madison_4_3:
 label madison_4_4:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(13)
     $ mystore.checkListLength()
@@ -650,7 +660,7 @@ label madison_4_4:
 label madison_4_end:
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "I believe that's all"
     you "I'll get back to you if I have any more questions"
     madison "Oh, sure"
@@ -661,7 +671,7 @@ label madison_5:
 
     scene bg_booth
     show madison neutral at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
 
     $ mystore.checkListForItem(14)
     $ mystore.checkListLength()
@@ -683,10 +693,12 @@ label madison_5:
     you "I'll get back to you if I have any more questions"
     madison "Oh, sure"
 
+    jump mall_booth
+
 label madison_6:
     scene bg_booth
     show madison scared at resize
-    play sound "audio/madison.mp3"
+    play sound "audio/Madison.wav"
     you "I'm arresting you on suspicion of murder. You're coming with me."
     madison "Wait, what? This must be some kind of mistake!"
     madison "Please, I trusted you! I didn't do anything wrong I swear!"
@@ -721,6 +733,8 @@ label george_1:
     with dissolve
     $ met_george = True
 
+    play sound "audio/George.wav"
+
     george "You! Hey you!"
     you "Pardon?"
     george "You don't happen to be a dokkaebi, right?"
@@ -738,6 +752,7 @@ label george_1_1:
     $ are_korean = True
 
     you "Maybe I am"
+    play sound "audio/George.wav"
     george "You better watch yourself then. We don't want your kind here, and last I heard, y'all have been droppin' like flies."
 
     jump george_1_end
@@ -749,6 +764,7 @@ label george_1_2:
     $ are_korean = False
 
     you "No."
+    play sound "audio/George.wav"
     george "Good! This town don't need more o' those roaming around. We've been diluted enough as it is."
 
     jump george_1_end
@@ -760,12 +776,15 @@ label george_1_end:
     you "You got something against dokkaebis?"
     george "Hell yeah I do! I ain't fought a war just to have the bastards I defended my country against livin here like it's nothin'."
     you "One of them was killed a few weeks ago."
+    play sound "audio/George.wav"
     george "You know, I say the better for it!"
     you "You don't have many friends do you."
     george "Who needs any?"
     you "That answers my question."
     you "I'll be back with some more questions for you."
     george "Heh??"
+
+    play sound "audio/George.wav"
 
     jump mall_fountain
 
@@ -774,6 +793,7 @@ label george_menu:
     show george mad at resize
     with dissolve
     show screen button
+    play sound "audio/George.wav"
     george "Ehh?"
     menu:
         "Ask about murder of Dorothy":
@@ -784,6 +804,8 @@ label george_menu:
             jump george_2
         "Ask about his background":
             jump george_5
+        "Leave":
+            jump mall_fountain
         "Accuse him of murder" if accusation_mode:
             jump george_6
 
@@ -814,6 +836,7 @@ label george_2_1:
     $ mystore.checkListLength()
 
     you "Anything else suspicious that you've seen?"
+    play sound "audio/George.wav"
     george "Tell you what I've seen. That damn Honey Islander's been acting real fishy lately. I know his kind when I see it. "
     george "They're all a bunch of good for nothin' weirdos. Nothing's felt right since they started showing up in droves. I know I saw him running around trespassing in the employees room last week."
 
@@ -828,6 +851,7 @@ label george_2_2:
     $ mystore.checkListLength()
 
     you "Anyone else you've seen in the mall around that time?"
+    play sound "audio/George.wav"
     george "I saw a werewolf hanging around during the early evening. Looked real gnarly, like she wasn't fully a wolf yet."
     george "Now I don't know what's up with her, but werewolves, those are real Americans right there. Not like any of the riffraff that claim they're one of us."
 
@@ -876,6 +900,7 @@ label george_2_end:
     show george mad at resize   
     you "Alright, thanks for the help."
     george "Heh??"
+    play sound "audio/George.wav"
 
     jump mall_fountain
 
@@ -940,6 +965,7 @@ label george_3_end:
     george "I'm just the only one brave enough to speak my mind and say it as it is."
     you "I'll keep this in mind."
     george "Heh??"
+    play sound "audio/George.wav"
 
     jump mall_fountain
 
@@ -989,6 +1015,7 @@ label george_4_mid:
     you "How long were you in the building for?"
     george "Roughly 6-9?"
     george "Those damn gorgons held me up. Wouldn't shut up about sculpturing. Felt like I was stone for three hours."
+    play sound "audio/George.wav"
     george "What has this country come to? Having gorgons educate our children?!"
     you "What did you do after? Say, an hour after that?"
     george "I took my niece's daughter home. We live a neighborhood away."
@@ -1024,6 +1051,8 @@ label george_4_4:
 
     you "Would any of them have a reason to harm the victim?"
     george "How should I know?! I tell you what, it's probably some damn foreigner tryna rid this country of its rightful population!"
+
+    play sound "audio/George.wav"
 
     jump george_4_end
 label george_4_end:
@@ -1063,6 +1092,8 @@ label george_5:
 
     you "I'm glad you're alright. I'll talk to you if I have anymore questions."
     george "Heh??"
+
+    play sound "audio/George.wav"
     
     jump mall_fountain
 
@@ -1103,6 +1134,7 @@ label daniel_1:
     show daniel neutral at resize
     with dissolve
     $ met_daniel = True
+    play sound "audio/DanielRegular.wav"
 
     you "Hello, I'd like to ask you a few questions."
     daniel "..."
@@ -1134,6 +1166,7 @@ label daniel_menu:
     show daniel neutral at resize
     with dissolve
     show screen button
+    play sound "audio/DanielRegular.wav"
     you "Hey Daniel. I'd like to ask you a few questions if that's alright."
     daniel "...ok"
 
@@ -1146,6 +1179,8 @@ label daniel_menu:
             jump daniel_4
         "Ask about the murder of Tom":
             jump daniel_5
+        "Leave":
+            jump mall_fountain
         "Accuse him of murder" if accusation_mode:
             jump daniel_6
 
@@ -1156,7 +1191,7 @@ label daniel_2:
 
     you  "It seems like you really like Daniel Radcliffe. Are you a performer too?"
     show daniel excited at resize
-
+    play sound "audio/DanielRegular.wav"
     daniel "I LOVE PERFORMING. It's art, it's gorgeous, it's beautiful. There isn't anything like it."
     menu:
         "That's really cool! Are you a dancer?":
@@ -1174,6 +1209,7 @@ label daniel_2_1:
 
     you "That's really cool! Are you a dancer?"
     daniel "No, no. Dancers don't get enough performances. I need more."
+    play sound "audio/DanielRegular.wav"
     daniel "I'm a cheerleader. We get to perform at every game, and after school every day we practice outdoors."
     daniel "Rain or shine. Everyone will see us, see me."
 
@@ -1190,10 +1226,12 @@ label daniel_2_2:
     you "That's really cool! Are you an actor in your school's theater program?"
     daniel "Acting? In my school's theater program?"
     you "Yeah, like Cats? Phantom of the Opera?"
+    play sound "audio/DanielRegular.wav"
     daniel "Those children don't even know the first thing about putting on a show. To call them actors is to spit in the face of all performers."
     daniel "All of them. All that rehearsal to put on a SINGLE shoddy performance, to then receive an undeserving, paltry applause."
     you "That's quite harsh."
     daniel "And yet true. I could never be part of that circus. No. I'm a cheerleader."
+    play sound "audio/DanielRegular.wav"
     daniel "Rain or shine, snow or sleet, we are there outdoors every day after school without fail."
     daniel "That's performance. That's dedication. Everyday, we are admired."
 
@@ -1215,6 +1253,7 @@ label daniel_3:
     show daniel neutral at resize
 
     you "Do you remember where you were the night of October 7th?"
+    play sound "audio/DanielRegular.wav"
     daniel "...school. parent-teacher conference..."
     you "And how long were you there for?"
     daniel "8. "
@@ -1253,6 +1292,7 @@ label daniel_3_2:
 
     you "Who's Madison?"
     daniel "..."
+    play sound "audio/DanielRegular.wav"
     daniel "student... werewolf."
     you "Did something happen with her?"
     daniel "... the cheerleaders talked with her. I wasn't part of that."
@@ -1279,10 +1319,12 @@ label daniel_4:
     show daniel neutral at resize
     you "Where were you on October 15th?"
     show daniel excited at resize
-    daniel "<pops out from behind the pillar> I was home of course. Practicing my cheer routines"
+    play sound "audio/DanielRegular.wav"
+    daniel "I was home of course. Practicing my cheer routines"
     you "Were you at school? October 14th was a Wednesday."
     daniel "Well, yes obviously. Cheer practice is after school."
-    daniel "After cheer I was furious because I couldn't get this move down. "
+    daniel "After cheer I was furious because I couldn't get this move down."
+    play sound "audio/DanielRegular.wav"
     daniel "I just can't STAND it when that happens. So I went home to keep practicing."
     menu:
         "I have someone who claims they saw you at the town square that day. Care to explain?" if saw_daniel_at_bar:
@@ -1300,6 +1342,7 @@ label daniel_4_1:
     you "I have someone who claims they saw you at the town square that day. Care to explain?"
     show daniel neutral at resize
     daniel "..."
+    play sound "audio/DanielRegular.wav"
     daniel "I forgot..."
     daniel "I walk through the town square to get home..."
     daniel "..."
@@ -1339,6 +1382,7 @@ label daniel_5:
     $ mystore.checkListLength()
 
     you "Where were you on the night of October 23rd?"
+    play sound "audio/DanielRegular.wav"
     daniel "at the mall."
     you "Are you aware there was a murder that night?"
     daniel "...no. who?"
@@ -1363,6 +1407,7 @@ label daniel_6:
     daniel "..."
     show daniel murderous at resize
     with hpunch
+    play sound "audio/DanielMurder.wav"
     daniel "DIE THEN."
     narrator "Daniel lunges at you, but you're ready for it. You wrestle him to the ground and handcuff him."
     you  "You have the right to remain silent. Anything you say can and will be used against you in a court of law. You have the right to talk to a lawyer for advice before we ask you any questions. You have the ri-"
@@ -1402,6 +1447,7 @@ label daniel_8:
     daniel "..."
     show daniel murderous at resize
     with hpunch
+    play sound "audio/DanielMurder.wav"
     daniel "YOU DIE NOW."
     narrator "Daniel lunges at you, and quickly plunges a knife into your chest. The last thing you see is Daniel’s face glancing at you, manically laughing as he continues his flurry of stabs while you take your last breath."    
     daniel "It's all a part of the show..."
@@ -1435,7 +1481,7 @@ label derek_1:
     $ met_derek = True
     show derek distressed at resize
     with dissolve
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
     #holding out sunglasses
     derek "Hey champ! Care for a pair?"
     you "What? "
@@ -1450,7 +1496,7 @@ label derek_1_1:
     
     scene bg_booth
     show derek distressed at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
     you "Sure, I'm busy at the moment, but I'll be back"
     derek "Oh joy! A prospective customer! Ya won't regret this pal, I promise you that!"
 
@@ -1463,7 +1509,7 @@ label derek_1_2:
     you "No thanks..."
     #takes off sunglasses
     show derek neutral at resize
-    play sound "audio/Derek3.mp3"
+    play sound "audio/Derek3.wav"
     derek "Oh.. I see."
     "<Sad Trombone>"
     derek "Oh don't mind me, that's just the sound of my heart getting kicked down an elevator shaft. Sinking deeper and deeper into the darkest pits of hell."
@@ -1474,7 +1520,7 @@ label derek_1_mid:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
     you "Anyway, what's your deal?"
     derek "You mean, you don't know? Why I'm Derek, of course! Sunglass producer extraordinaire! "
     derek "I'm kind of a big deal around here"
@@ -1492,7 +1538,7 @@ label derek_1_3:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     you "So you sell sunglasses?"
     derek "Guilty as charged! No other retailer can guarantee you the Derek seal of approval I'll tell you that!"
 
@@ -1502,7 +1548,7 @@ label derek_1_4:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "How's business?"
     derek "Absolutely splendid! We sell out our stock every week! The customers can't get enough of them!"
@@ -1516,7 +1562,7 @@ label derek_1_end:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
 
     you "Well, carry on, but I have a few questions to ask you when I get back."
     derek "Don't be a stranger! And make sure you tell all your friends that Derek's shades are where it's at!"
@@ -1529,7 +1575,7 @@ label derek_menu_returning:
     show derek neutral at resize
     with dissolve
     show screen button
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     derek "Why if it isn't my favorite prospective customer! What can I do for you?"
     menu:
@@ -1541,6 +1587,8 @@ label derek_menu_returning:
             jump derek_2
         "Ask about business":
             jump derek_5
+        "Leave":
+            jump mall_booth
         "Accuse him of murder" if accusation_mode:
             jump derek_6
 
@@ -1549,7 +1597,7 @@ label derek_menu:
     scene bg_booth
     show derek neutral at resize
     show screen button
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     menu:
             "Ask about the murder of Dorothy":
@@ -1560,6 +1608,8 @@ label derek_menu:
                 jump derek_2
             "Ask about business":
                 jump derek_5
+            "Leave":
+                jump mall_booth
             "Accuse him of murder" if accusation_mode:
                 jump derek_6
             
@@ -1568,7 +1618,7 @@ label derek_2:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
 
     you "What can you tell me about the murder of Tom Chatawa?"
     derek "Oh, it's all so terrible... The coppers booked me last week for questioning. They think I did it! It's ridiculous!"
@@ -1583,7 +1633,7 @@ label derek_2_1:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
 
     $ mystore.checkListForItem(33)
     $ mystore.checkListLength()
@@ -1597,12 +1647,12 @@ label derek_2_2:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3" 
+    play sound "audio/Derek1.wav" 
 
     $ mystore.checkListForItem(34)
     $ mystore.checkListLength()   
 
-    you "I'm investigating these killings. <increases suspicion>"
+    you "I'm investigating these killings."
     derek "On your own? Or..."
     you "I work with the police."
     derek "Oh, you're a detective? I guess I have no choice but to cooperate then"
@@ -1613,7 +1663,7 @@ label derek_2_mid:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
 
     derek "His chicken was the talk of the town! \"No one could make fried chicken like ol' Tom Chatawa!\" Sooner or later, that stand became all anyone ever wanted to go to in this place. "
     derek "I'd be lying if I said I was crying over spilled milk. The lad did not deserve what happened to him, "
@@ -1628,7 +1678,7 @@ label derek_2_3:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
 
     $ mystore.checkListForItem(35)
     $ mystore.checkListLength()
@@ -1644,13 +1694,14 @@ label derek_2_4:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(36)
     $ mystore.checkListLength()
 
     you "Who else was in the mall at the time of the killing? Anyone here you recognize from that night?"
-    derek "Well, I'm not exactly keeping track of every face I see. If I recall correctly, I believe I noticed that one goatwoman near Spirit Halloween shopping around last week. She was here around 7 to 8 and I didn't see her after. There was also this weird kid who looked quite empty inside. Probably some elementary schooler. I think I saw him over there right now. I saw him leave the mall right as the sun was going down."
+    derek "Well, I'm not exactly keeping track of every face I see. If I recall correctly, I believe I noticed that one goatwoman near Spirit Halloween shopping around last week. She was here around 7 to 8 and I didn't see her after."
+    derek "There was also this weird kid who looked quite empty inside. Probably some elementary schooler. I think I saw him over there right now. I saw him leave the mall right as the sun was going down."
     you "I think that's enough. Thank you, Derek."
     derek "Anything else you want to ask me?"
 
@@ -1660,7 +1711,7 @@ label derek_2_end:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "I think that's enough. Thank you, Derek."
     derek "Anything else you want to ask me?"
@@ -1672,7 +1723,7 @@ label derek_3:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "Where were you on the night of October 15th?"
     derek "Oh, that was two weeks ago, I'm not sure if I fully remember..."
@@ -1687,7 +1738,7 @@ label derek_3_1:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(37)
     $ mystore.checkListLength() 
@@ -1703,7 +1754,7 @@ label derek_3_2:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(38)
     $ mystore.checkListLength()
@@ -1719,7 +1770,7 @@ label derek_3_mid:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "Was there anyone you remember running into?"
     derek "Well, there were a bunch of high schoolers out too, probably drinking. I mean, what are you gonna do? They're all bound to sooner or later."
@@ -1733,7 +1784,7 @@ label derek_3_3:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(39)
     $ mystore.checkListLength()    
@@ -1741,13 +1792,13 @@ label derek_3_3:
     you "One of them happen to be a werewolf?"
     derek "I think I did see a couple of werewolves. You know, all furry and stuff. Bunch of them throughout the night."
 
-    jump derek_3_mid
+    jump derek_3_end
 
 label derek_3_4:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(40)
     $ mystore.checkListLength()    
@@ -1757,13 +1808,13 @@ label derek_3_4:
     you "One of them happen to be a swamp monster? <increase suspicion>"
     derek "I think I did see a swamp monster that night. Probably here for a good time, but  I don't think I saw him take a single drink."
 
-    jump derek_3_mid
+    jump derek_3_end
 
 label derek_3_end:
     
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "When did you see them?"
     derek "I'm telling you I don't remember much, but I guess it was around the time I was there, so sometime between the hours of 8-12."
@@ -1777,7 +1828,7 @@ label derek_4:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "Where were you on the night of October 7th?"
     derek "That was quite a while ago, I'm not sure if I remember."
@@ -1794,7 +1845,7 @@ label derek_4_1:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(41)
     $ mystore.checkListLength()    
@@ -1808,7 +1859,7 @@ label derek_4_2:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(42)
     $ mystore.checkListLength()    
@@ -1822,7 +1873,7 @@ label derek_4_end:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "And where do you live exactly?"
     derek "You know I'm not gonna answer that."
@@ -1837,7 +1888,7 @@ label derek_5:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek3.mp3"    
+    play sound "audio/Derek3.wav"    
     
     you "Awfully low turnaround today isn't it?"
     derek "Oh well, it's just typical seasonal blues! It's Halloween after all! Customers flock in droves to the Party City this time of year!"
@@ -1859,7 +1910,7 @@ label derek_5_1:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(43)
     $ mystore.checkListLength()    
@@ -1873,7 +1924,7 @@ label derek_5_2:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"
+    play sound "audio/Derek1.wav"
 
     $ mystore.checkListForItem(44)
     $ mystore.checkListLength()    
@@ -1887,7 +1938,7 @@ label derek_5_end:
 
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "I think that's enough. Thank you, Derek."
     derek "Anything else you wanna ask me?"
@@ -1897,7 +1948,7 @@ label derek_5_end:
 label derek_6:
     scene bg_booth
     show derek neutral at resize
-    play sound "audio/Derek1.mp3"    
+    play sound "audio/Derek1.wav"    
     
     you "I'm arresting you on suspicion of murder. You're coming with me."
     derek "Wait what?!"
@@ -1929,7 +1980,7 @@ label shannon_1:
     scene bg_storefront
     show shannon neutral at resize
     with dissolve
-    play sound "audio/shannon.mp3"
+    play sound "audio/Shannon.wav"
     $ met_shannon = True
 
     shannon "Oh my dearest me, look at you! Aren't you the most precious thing in the world?"
@@ -1953,7 +2004,7 @@ label shannon_menu:
 
     scene bg_storefront
     show shannon neutral at resize
-    play sound "audio/shannon.mp3"
+    play sound "audio/Shannon.wav"
     show screen button
     shannon "Detective! You're back! I was wondering if I'd see you again tonight. Gotten any leads yet?"
     you "I'm working on it. I've got some questions for you if you don't mind."
@@ -1966,6 +2017,8 @@ label shannon_menu:
             jump shannon_3
         "Ask about the murder of Tom":
             jump shannon_4
+        "Leave":
+            jump mall_storefront
         "Accuse her of murder" if accusation_mode:
             jump shannon_5
 
@@ -1973,7 +2026,7 @@ label shannon_2:
 
     scene bg_storefront
     show shannon neutral at resize
-    play sound "audio/shannon.mp3"
+    play sound "audio/Shannon.wav"
 
     $ mystore.checkListForItem(45)
     $ mystore.checkListLength()
@@ -2008,7 +2061,7 @@ label shannon_3:
 
     scene bg_storefront
     show shannon neutral at resize
-    play sound "audio/shannon.mp3"
+    play sound "audio/Shannon.wav"
 
     $ mystore.checkListForItem(46)
     $ mystore.checkListLength()
@@ -2052,7 +2105,7 @@ label shannon_4:
 
     scene bg_storefront
     show shannon neutral at resize
-    play sound "audio/shannon.mp3"
+    play sound "audio/Shannon.wav"
 
     $ mystore.checkListForItem(47)
     $ mystore.checkListLength()
@@ -2092,7 +2145,7 @@ label shannon_4:
 label shannon_5:
     scene bg_storefront
     show shannon neutral at resize
-    play sound "audio/shannon.mp3"
+    play sound "audio/Shannon.wav"
     you "I'm arresting you on suspicion of murder. You're coming with me."
     shannon "Oh dear! Are you being serious right now?"
     you "I'm afraid so, Shannon. Please cooperate."
