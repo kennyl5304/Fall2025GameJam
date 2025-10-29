@@ -66,10 +66,10 @@ define gui.name_text_font = "fonts/UnfinishedScream.ttf"
 define gui.interface_text_font = "fonts/Stranger back in the Night.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 44
+define gui.text_size = 48
 
 ## The size of character names.
-define gui.name_text_size = 53
+define gui.name_text_size = 55
 
 ## The size of text in the game's user interface.
 define gui.interface_text_size = 53
@@ -189,7 +189,7 @@ define gui.confirm_button_text_xalign = 0.5
 define gui.page_button_borders = Borders(15, 6, 15, 6)
 
 define gui.quick_button_borders = Borders(15, 6, 15, 0)
-define gui.quick_button_text_size = 21
+define gui.quick_button_text_size = 45
 define gui.quick_button_text_idle_color = gui.idle_small_color
 define gui.quick_button_text_selected_color = gui.accent_color
 
