@@ -7,11 +7,10 @@ init python in mystore:
     def checkListForItem(id):
         if id not in seenList:
             seenList.append(id)
-            print(len(seenList))
     
     def checkListLength():
         #47 unique passages
-        if len(seenList) >= 35:
+        if len(seenList) >= 30:
             renpy.show_screen("countdown")
 
 # Declare characters used by this game. The color argument colorizes the
@@ -338,6 +337,8 @@ label stephen_6:
     with fade
     pause 5
     show text "The killer is still on the loose."
+
+    return
 
 label madison_1:
 
@@ -725,6 +726,8 @@ label madison_7:
     with fade
     pause 5
     show text "The killer is still on the loose."
+
+    return
 
 label george_1:
 
@@ -1128,6 +1131,8 @@ label george_7:
     pause 5
     show text "The killer is still on the loose."
 
+    return
+
 label daniel_1:
 
     scene bg_fountain
@@ -1511,7 +1516,7 @@ label derek_1_2:
     show derek neutral at resize
     play sound "audio/Derek3.wav"
     derek "Oh.. I see."
-    "<Sad Trombone>"
+    narrator "A sad trombone plays somewhere"
     derek "Oh don't mind me, that's just the sound of my heart getting kicked down an elevator shaft. Sinking deeper and deeper into the darkest pits of hell."
 
     jump derek_1_mid
@@ -1743,7 +1748,7 @@ label derek_3_1:
     $ mystore.checkListForItem(37)
     $ mystore.checkListLength() 
     
-    you "Near the town square? <increase suspicion>"
+    you "Near the town square?"
     derek "Well yeah, the best places are there. The best moonshine in town."
     you "So was the body of a dokkaebi."
     derek "Oh yeah I heard about that."
@@ -1805,7 +1810,7 @@ label derek_3_4:
     
     $ saw_daniel_at_bar = True
 
-    you "One of them happen to be a swamp monster? <increase suspicion>"
+    you "One of them happen to be a swamp monster?"
     derek "I think I did see a swamp monster that night. Probably here for a good time, but  I don't think I saw him take a single drink."
 
     jump derek_3_end
@@ -1915,7 +1920,7 @@ label derek_5_1:
     $ mystore.checkListForItem(43)
     $ mystore.checkListLength()    
     
-    you "Do you know of anyone who would wish harm upon these owners? <increase suspicion>"
+    you "Do you know of anyone who would wish harm upon these owners?"
     derek "I'm not too sure. I know this one old mothman that hates anyone and everyone, but I don't know if he'd have the capability to kill."
 
     jump derek_5_end
@@ -1974,6 +1979,8 @@ label derek_7:
     with fade
     pause 5
     show text "The killer is still on the loose."
+
+    return
 
 label shannon_1:
 
@@ -2174,6 +2181,8 @@ label shannon_6:
     with fade
     pause 5
     show text "The killer is still on the loose."
+
+    return
 
 transform one_fifth:
     zoom 0.2
